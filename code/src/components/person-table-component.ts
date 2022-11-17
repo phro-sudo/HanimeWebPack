@@ -11,14 +11,14 @@ const tableTemplate = html`
     <table class="w3-table w3-striped w3-bordered">
         <thead>
             <tr>
-            <th>Id</th><th>Name</th>
+            <th>Name</th><th>Age</th>
             </tr>
         </thead>
         <tbody></tbody>
     </table>
 `
 const rowTemplate = (person: Person) => html`
-    <td>${person.id}</td><td>${person.name}</td>
+    <td>${person.name}</td><td>${person.age}</td>
 `
 class PersonTableComponent extends HTMLElement {
     private root: ShadowRoot
@@ -26,7 +26,7 @@ class PersonTableComponent extends HTMLElement {
         super()
         this.root = this.attachShadow({ mode: "closed" })
     }
-
+//    "Name", "B", "W", "H", "Age", "Birthdate", image_url, height, weight)
     async connectedCallback() {
         store
         .pipe(

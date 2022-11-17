@@ -2,7 +2,7 @@ import { Person } from "./model/person"
 import store from "./model/store"
 import produce from "immer"
 
-const url = "https://jsonplaceholder.typicode.com/users"
+const url = "http://localhost:8080"
 
 class PersonsService {
     async fetchPersons() {
