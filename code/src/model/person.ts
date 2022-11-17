@@ -1,6 +1,12 @@
-export interface User {
+export interface Person {
     id: number,
     name: string,
-    username: string,
-    email: string
+    b: number,
+    w: number,
+    h: number,
+    age: number,
+    birthdate: Date,
+    image_url: string,
+    height: number,
+    weight: number
 }

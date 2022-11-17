@@ -1,10 +1,10 @@
 import { html, render } from "lit-html"
 
 const template = html`
-    <div>User: Max Mustermann</div>
+    <div>Person: Max Mustermann</div>
 `
 
-class UserComponent extends HTMLElement {
+class PersonComponent extends HTMLElement {
     static get observedAttributes() {
         return ["id"]
     }
@@ -13,10 +13,10 @@ class UserComponent extends HTMLElement {
         this.attachShadow({mode: "open"})
     }
     attributeChangedCallback(name: string, oldValue: string, value: string) {
-        console.log("TODO: display user", value)
+        console.log("TODO: display person", value)
     }
     connectedCallback() {
-        console.log("user connected")
+        console.log("person connected")
         this.render()
     }
     private render() {
@@ -26,4 +26,4 @@ class UserComponent extends HTMLElement {
 
 }
 
-customElements.define("user-component", UserComponent)
+customElements.define("person-component", PersonComponent)
