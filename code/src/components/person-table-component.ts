@@ -1,8 +1,8 @@
 import {html, render} from "lit-html"
 
 import store from "../model/store"
-import { User } from "../model/user"
-import userService from "../user-service"
+import { Person } from "../model/person"
+import personService from "../person-service"
 import { distinctUntilChanged, map } from 'rxjs/operators';
 
 
@@ -17,10 +17,10 @@ const tableTemplate = html`
         <tbody></tbody>
     </table>
 `
-const rowTemplate = (user: User) => html`
-    <td>${user.id}</td><td>${user.name}</td>
+const rowTemplate = (person: Person) => html`
+    <td>${person.id}</td><td>${person.name}</td>
 `
-class UserTableComponent extends HTMLElement {
+class PersonTableComponent extends HTMLElement {
     private root: ShadowRoot
     constructor() {
         super()
@@ -30,23 +30,23 @@ class UserTableComponent extends HTMLElement {
     async connectedCallback() {
         store
         .pipe(
-            map(model => model.users),
+            map(model => model.persons),
             distinctUntilChanged()
-            ).subscribe(users => this.render(users))
-        userService.fetchUsers()
+            ).subscribe(person => this.render(person))
+            personService.fetchPersons()
     }
 
-    private render(users: User[]) {
+    private render(persons: Person[]) {
         render(tableTemplate, this.root)
         const body = this.root.querySelector("tbody")
-        users.forEach(user => {
+        persons.forEach(person => {
             const row = body.insertRow()
             row.onclick = () => {
-                const event = new CustomEvent("user-selected", {detail: {user}})
+                const event = new CustomEvent("person-selected", {detail: {person}})
                 this.dispatchEvent(event)
             }
-            render(rowTemplate(user), row)
+            render(rowTemplate(person), row)
         })
     }
 }
-customElements.define("user-table-component", UserTableComponent)
+customElements.define("person-table-component", PersonTableComponent)

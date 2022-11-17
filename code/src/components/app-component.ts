@@ -1,10 +1,10 @@
 import {html, render} from "lit-html"
-import "./user-table-component"
-import "./user-component"
+import "./person-table-component"
+import "./person-component"
 
 const appComponentTemplate = html`
-    <user-table-component id="table"></user-table-component>
-    <user-component id="user"></user-component>
+    <person-table-component id="table"></person-table-component>
+    <person-component id="person"></person-component>
 `
 
 class AppComponent extends HTMLElement {
@@ -19,14 +19,14 @@ class AppComponent extends HTMLElement {
     }
     render() {
         render(appComponentTemplate, this.shadowRoot)
-        const userTableComponent = this.shadowRoot.getElementById("table")
-        const userComponent: HTMLElement = this.shadowRoot.querySelector("user-component")
-        userTableComponent.addEventListener("user-selected", (e: CustomEvent) => {
-            const user = e.detail.user
-            console.log("user selected", user)
-            userComponent.setAttribute("id", user.id)
-            userTableComponent.style.display = "none"
-            userComponent.style.display = "block"
+        const personTableComponent = this.shadowRoot.getElementById("table")
+        const personComponent: HTMLElement = this.shadowRoot.querySelector("person-component")
+        personTableComponent.addEventListener("person-selected", (e: CustomEvent) => {
+            const person = e.detail.person
+            console.log("person selected", person)
+            personComponent.setAttribute("id", person.id)
+            personTableComponent.style.display = "none"
+            personComponent.style.display = "block"
         })
     }
 }
