@@ -2,7 +2,7 @@ import { Person } from "./model/person"
 import store from "./model/store"
 import produce from "immer"
 
-const url = "http://localhost:8080"
+const url = "http://172.16.101.0:5000/characters"
 
 class PersonsService {
     async fetchPersons() {

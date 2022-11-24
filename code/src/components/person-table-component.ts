@@ -33,7 +33,7 @@ class PersonTableComponent extends HTMLElement {
             map(model => model.persons),
             distinctUntilChanged()
             ).subscribe(person => this.render(person))
-            personService.fetchPersons()
+        personService.fetchPersons()
     }
 
     private render(persons: Person[]) {
