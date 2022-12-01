@@ -10,14 +10,12 @@ export interface Model {
 const initialState: Model = {
     persons: [],
     getPersionByID: function (id: number): Person {
-        console.log(id)
         let selectedPerson : Person = null;
         this.persons.forEach((person: Person) => {
             if (person.id === id) {
                 selectedPerson = person;
             }
         })
-        console.log(selectedPerson)
         return selectedPerson;
 
     }

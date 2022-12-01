@@ -2,7 +2,7 @@ import { Person } from "./model/person"
 import store from "./model/store"
 import produce from "immer"
 
-const url = "http://127.0.0.1:8080/hello/people"
+const url = "/hello/people"
 
 class PersonsService {
     async fetchPersons() {
@@ -11,7 +11,10 @@ class PersonsService {
 
         let persons = await response.json()
 
-        let nextState = produce(store.getValue(), (draft: { persons: any }) => {
+        let nextState = produce(store.getValue(), (draft: { persons: Person[] }) => {
+            persons.forEach((person: Person, index: number) => {
+                person.id = index;
+            });
             draft.persons = persons;
         })
         

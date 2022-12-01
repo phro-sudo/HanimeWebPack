@@ -23,7 +23,6 @@ class AppComponent extends HTMLElement {
         const personComponent: HTMLElement = this.shadowRoot.querySelector("person-component")
         personTableComponent.addEventListener("person-selected", (e: CustomEvent) => {
             const person = e.detail.person
-            console.log("person selected", person.id)
             personComponent.setAttribute("personId", person.id)
             personTableComponent.style.display = "none"
             personComponent.style.display = "block"

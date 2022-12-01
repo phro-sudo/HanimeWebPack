@@ -30,6 +30,9 @@ module.exports = {
     static: {
       directory: path.join(__dirname, '/'),
     },
+    proxy: {
+      "/hello": "http://localhost:8080/"
+    },
     compress: true,
     port: 4200,
   }
