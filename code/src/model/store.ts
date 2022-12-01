@@ -10,7 +10,7 @@ export interface Model {
 const initialState: Model = {
     persons: [],
     getPersionByID: function (id: number): Person {
-        console.log(id);
+        console.log(id)
         let selectedPerson : Person = null;
         this.persons.forEach((person: Person) => {
             if (person.id === id) {
